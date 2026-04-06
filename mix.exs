@@ -39,10 +39,10 @@ defmodule OpenCC.MixProject do
       links: %{"GitHub" => @source_url},
       files: [
         "lib",
-        "native/opencc_nif/src",
-        "native/opencc_nif/Cargo.toml",
-        "native/opencc_nif/Cargo.lock",
-        "native/opencc_nif/.cargo",
+        "native/opencc/src",
+        "native/opencc/Cargo.toml",
+        "native/opencc/Cargo.lock",
+        "native/opencc/.cargo",
         "checksum.exs",
         "mix.exs",
         "README.md"
