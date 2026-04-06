@@ -49,12 +49,12 @@ jobs:
       - name: Build the NIF
         uses: philss/rustler-precompiled-action@v1.0.1
         with:
-          project-name: harfbuzz_ex
+          project-name: opencc
           project-version: ${{ env.PROJECT_VERSION }}
           target: ${{ matrix.job.target }}
           nif-version: ${{ matrix.nif }}
           use-cross: ${{ matrix.job.use-cross }}
-          project-dir: "native/harfbuzz_ex"
+          project-dir: "native/opencc"
 
       - name: Upload Artifacts
         uses: softprops/action-gh-release@v1
