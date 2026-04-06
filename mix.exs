@@ -1,13 +1,13 @@
 defmodule OpenCC.MixProject do
   use Mix.Project
 
-  @version "0.3.0"
+  @version "0.3.1"
   @source_url "https://github.com/jkwchui/opencc_ex"
 
   def project do
     [
       app: :opencc,
-      version: "0.3.0",
+      version: @version,
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
