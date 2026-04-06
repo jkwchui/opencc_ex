@@ -14,8 +14,10 @@ defmodule OpenCC.Native do
       "x86_64-unknown-linux-gnu",
       "x86_64-pc-windows-gnu",
       "x86_64-pc-windows-msvc"
-    ]
+    ],
+    nif_versions: ["2.15", "2.16"]
 
+  @spec new_builtin(any()) :: any()
   def new_builtin(_config), do: :erlang.nif_error(:nif_not_loaded)
   def new_custom(_path), do: :erlang.nif_error(:nif_not_loaded)
   def convert(_ref, _text), do: :erlang.nif_error(:nif_not_loaded)
