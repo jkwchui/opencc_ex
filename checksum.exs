@@ -1,6 +1,6 @@
 %{
-  "libopencc-v0.3.2-nif-2.15-aarch64-apple-darwin.so.tar.gz" => "sha256:6fbf9f9617f70d50200d7112a06367a80cd79690c95b2a480284e86ae9192c8f",
-  "libopencc-v0.3.2-nif-2.15-x86_64-unknown-linux-gnu.so.tar.gz" => "sha256:94273532b07e644152253b407b39b7075aa1924ddd8c0295c0b0fbc268140fcd",
-  "opencc-v0.3.2-nif-2.15-x86_64-pc-windows-gnu.dll.tar.gz" => "sha256:bc939432d405f7bb922066ac554485d4e3cc4db622e062647d2f9275942dc058",
-  "opencc-v0.3.2-nif-2.15-x86_64-pc-windows-msvc.dll.tar.gz" => "sha256:49f9f599838b07b62131ef881bfef0be2edacceea3dfb11c6e6ff854f21e63cf",
+  "libopencc-v0.3.5-nif-2.15-aarch64-apple-darwin.so.tar.gz" => "sha256:0ce46bad60e0dab84934e941d9b868ff83f560fedf40f9cae1199f2190f3fbe5",
+  "libopencc-v0.3.5-nif-2.15-x86_64-unknown-linux-gnu.so.tar.gz" => "sha256:2fdd55dadb9e6f2bacf2b3052eaff5e969af4b643e60c2071d66d3fd2288bf90",
+  "opencc-v0.3.5-nif-2.15-x86_64-pc-windows-gnu.dll.tar.gz" => "sha256:cd5260b67902429f3c15028b112645b568e3fbc7685a33bd65c87be482776181",
+  "opencc-v0.3.5-nif-2.15-x86_64-pc-windows-msvc.dll.tar.gz" => "sha256:e65f2c27f3f6d8af71b1f499234ab26bda756c9e946d613b0ef5025eb09f5470",
 }
