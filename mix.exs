@@ -1,7 +1,7 @@
 defmodule OpenCC.MixProject do
   use Mix.Project
 
-  @version "0.3.2"
+  @version "0.3.3"
   @source_url "https://github.com/jkwchui/opencc_ex"
 
   def project do
@@ -26,6 +26,7 @@ defmodule OpenCC.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:rustler, "~> 0.37", optional: true},
       {:rustler_precompiled, "0.9.0"}
       # {:dep_from_hexpm, "~> 0.3.0"},
