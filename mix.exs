@@ -1,7 +1,7 @@
 defmodule OpenCC.MixProject do
   use Mix.Project
 
-  @version "0.3.6"
+  @version "0.3.7"
   @source_url "https://github.com/jkwchui/opencc_ex"
 
   def project do
@@ -41,11 +41,9 @@ defmodule OpenCC.MixProject do
         "native/opencc/src",
         "native/opencc/Cargo.toml",
         "native/opencc/Cargo.lock",
-        # "native/opencc/.cargo",
-        "checksum.exs",
         "mix.exs",
         "README.md",
-        "checksum.exs"
+        "checksum-Elixir.OpenCC.Native.exs"
       ]
     ]
   end
