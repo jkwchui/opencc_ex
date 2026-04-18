@@ -7,35 +7,52 @@ defmodule OpenCC do
   # --- public API ---
 
   @doc """
-  Creates a new OpenCC GenServer linked to a built-in configuration.
+  Creates a new OpenCC GenServer linked to either a built-in configuration (:s2t, :t2s, :s2hk, :t2hk, :s2tw, :t2tw), or a custom config via a JSON.  Register a name with the optional `:name` parameter.
 
-  Example usage: `OpenCC.new(:s2hk)`
+  Example usage: `OpenCC.start_link(:s2hk, name)`
   """
-  def new(built_in) when is_atom(built_in) do
-    GenServer.start_link(__MODULE__, {:built_in, built_in})
+  def start_link(opts) do
+    name = Keyword.get(opts, :name)
+
+    # determine initialization strategy
+    init_arg = cond do
+      Keyword.has_key?(opts, :built_in) ->
+        {:built_in, Keyword.get(opts, :built_in)}
+      Keyword.has_key?(opts, :custom) ->
+        {:custom, Keyword.get(opts, :custom)}
+      true ->
+        raise ArgumentError, "Must provide :built_in or :custom config in opts"
+    end
+
+    if name do
+      GenServer.start_link(__MODULE__, init_arg, name: name)
+    else
+      GenServer.start_link(__MODULE__, init_arg)
+    end
   end
 
   @doc """
-  Creates a new OpenCC GenServer usinga custom config JSON file.
-
-  Example usage: `OpenCC.new(:custom, "path/to/custom.json")`
+  Generates the child spec using :name as :id, so multiple instances can be started in the supervision tree and independently referred to.
   """
+  def child_spec(opts) do
+    %{
+      id: Keyword.get(opts, :name, __MODULE__),
+      start: {__MODULE__, :start_link, [opts]}
+    }
+  end
+
+  # Keep new/1 and new/2 for backward compatibility or simple scripting
+  def new(built_in) when is_atom(built_in), do: start_link(built_in: built_in)
+
   def new(:custom, path) do
-    # using `JSON` module to validate config file before Rust initialization
-    with  {:ok, content} <- File.read(path),
-          {:ok, _parsed} <- JSON.decode(content)
-    do
-      GenServer.start_link(__MODULE__, {:custom, path})
-    else
-      {:error, reason} -> {:error, reason}
-    end
+    start_link(custom: path)
   end
 
   @doc """
   Converts a string of text. Returns `{:ok, converted_text}`.
   """
-  def convert(pid, text) when is_binary(text) do
-    GenServer.call(pid, {:convert, text})
+  def convert(server, text) when is_binary(text) do
+    GenServer.call(server, {:convert, text})
   end
 
   @doc """
